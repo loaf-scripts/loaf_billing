@@ -7,6 +7,7 @@ version "1.0.0"
 shared_script "shared/*.lua"
 server_script {
     "@mysql-async/lib/MySQL.lua",
+    "@oxmysql/lib/MySQL.lua",
     "server/*.lua"
 }
 client_script "client/*.lua"
