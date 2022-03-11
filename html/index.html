@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Loaf Scripts#7785">
+        <meta name="Description" content = "FiveM billing script for ESX & QBCore">
+        
+        <link rel="stylesheet" href="assets/css/index.css">
+        <link rel="icon" href="assets/img/logo.png">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+
+        <title>Billing - Loaf Scripts</title>
+    </head>
+    <body>
+        <div class="content">
+            <div class="header">
+                <img id="company-logo" src="assets/img/logo.png" width="75" height="75" alt="Company Logo">
+                <h1 id="company">Loaf Housing Inc.</h1>
+            </div>
+            
+            <div class="company-info">
+                <p>
+                    18 San Andreas Avenue
+                    <br>
+                    <span>Los Santos, LS 12210</span>
+                    <i id="close" onclick="closeUI()" class="fa-solid fa-circle-xmark"></i>
+                </p>
+            </div>
+
+            <table class="shipping-info">
+                <tr>
+                    <th>Bill To</th>
+                    <th>Bill From</th>
+                </tr>
+                <tr>
+                    <td id="to-name">John Smith</td>
+                    <td id="from-name">John Smith</td>
+                </tr>
+                <tr>
+                    <td>15 Grove Street</td>
+                    <td>18 San Andreas Avenue</td>
+                </tr>
+                <tr>
+                    <td>Los Santos, LS 12210</td>
+                    <td>Los Santos, LS 12210</td>
+                </tr>
+            </table>
+            <table class="invoice-info">
+                <tr>
+                    <th>Invoice #</th>
+                    <td id="invoice-id"></td>
+                </tr>
+                <tr>
+                    <th>Invoice Date</th>
+                    <td id="issue-date">11/02/2019</td>
+                </tr>
+                <tr>
+                    <th>Due Date</th>
+                    <td id="due-date">26/02/2019</td>
+                </tr>
+                <!-- <tr>
+                    <th>Order No</th>
+                    <td>2312</td>
+                </tr> -->
+            </table>
+
+            <table class="purchase-info">
+                <tr>
+                    <th>Qty</th>
+                    <th>Description</th>
+                    <th>Unit Price</th>
+                    <th>Amount</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td id="description">Product description</td>
+                    <td id="price1">100.00</td>
+                    <td id="price2">100.00</td>
+                </tr>
+                <tr id="late-payment" style="display:none">
+                    <td id="late-days">0</td>
+                    <td>Late payment (<span id="interest">0</span>%)</td>
+                    <td id="late-amount">100.00</td>
+                    <td id="late-total">100.00</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="invoice-total">Invoice Total</td>
+                    <td>$<span id="total">100.00</span></td>
+                </tr>
+            </table>
+
+            <div class="signature">
+                <a>Sign here:</a>
+                <canvas id="signature" class="signature" width=490 height=100></canvas>
+            </div>
+
+            <button id="submit">Sign</button>
+            <button id="clear">Clear</button>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+        <script src="assets/js/script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+:root {
+    --color1: rgb(0, 0, 0);
+    --color2: rgb(255, 255, 255);
+}
+
+* {
+    box-sizing: border-box;
+    /* font-family: 'Raleway', sans-serif; */
+    font-family: Arial, Helvetica, sans-serif;
+    transition: .2s;
+    user-select: none;
+}
+
+body {
+    background-color:rgba(0, 0, 0, 0.4);
+    display:none;
+}
+
+.content {
+    position: absolute;
+    background-image: url("/html/assets/img/paper.jfif");
+    background-size: cover;
+    
+    width: 600px;
+    height: 800px;
+
+    /* right: 20vw;
+    top: 5vh; */
+
+    padding: 55px;
+    left: 50%;
+    transform: translate(-50%, 20%);
+}
+.content img {
+    float:right;
+}
+.content h1 {
+    float:left;
+    color: var(--color1);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    /* font-family: 'Dancing Script', cursive; */
+}
+
+.header {
+    height: 75px;
+}
+
+.signature {
+    text-align: left;
+    font-size: 1.5em;
+}
+.signature a {
+    display: inline-block;
+}
+.signature button {
+    background-color: #fabbce;
+    color:#000;
+}
+.signature canvas {
+    border-bottom: 1px solid black;
+}
+
+.shipping-info {
+    width: 55%;
+    float:left;
+    font-size: .95rem
+}
+.shipping-info th {
+    color: var(--color1);
+    text-align: left;
+}
+
+.invoice-info {
+    width: 45%;
+    float:left;
+    display: table-cell;
+    font-size: .95rem;
+}
+.invoice-info th {
+    text-align: right;
+    color: var(--color1);
+}
+.invoice-info td {
+    position: absolute;
+    right: 55px;
+    float:right;
+    text-align: right;
+}
+
+.purchase-info {
+    width: 100%;
+    padding-top: 20px;
+    margin-bottom: 25px;
+}
+.purchase-info td:nth-child(1) {
+    text-align: center;
+}
+.purchase-info td:nth-child(2) {
+    text-align: left;
+}
+.purchase-info td:nth-child(3), td:nth-child(4) {
+    text-align: right;
+}
+.purchase-info th {
+    background-color: var(--color1);
+    color: var(--color2);
+}
+th {
+    text-transform: uppercase;
+}
+.invoice-total {
+    color: var(--color1);
+    font-weight: bold;
+}
+
+button {
+    display: block;
+    font-size: 1.25rem;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    background-color: var(--color1);
+    color: var(--color2);
+    padding: 7px;
+}
+button:hover {
+    filter: brightness(85%);
+}
+
+#submit {
+    float: right;
+}
+#close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: rgb(255, 86, 86)
+}
+#clear {
+    float: left;
+}
