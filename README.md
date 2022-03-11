@@ -28,3 +28,5 @@ All other configurations are done in shared/config.lua
 
 ## Requirements
 * [loaf_lib](https://github.com/loaf-scripts/loaf_lib)
+* (should already be on your server) [mysql-async](https://github.com/brouznouf/fivem-mysql-async) or [oxmysql](https://github.com/overextended/oxmysql/)
+* (qb only) [qb-menu](https://github.com/qbcore-framework/qb-menu)
