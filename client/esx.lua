@@ -8,7 +8,7 @@ CreateThread(function()
         Wait(500)
     end
     while not ESX.GetPlayerData() or not ESX.GetPlayerData().job do
-        Wait(250)
+        Wait(500)
     end
 
     local function ConfirmTransfer(label, billId, playerName, playerId)

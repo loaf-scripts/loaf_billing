@@ -120,7 +120,7 @@ end
 function GetPlayers()
     local found = {}
     for _, player in pairs(GetActivePlayers()) do
-        if player ~= PlayerId() then
+        -- if player ~= PlayerId() then
             local playerPed = GetPlayerPed(player)
             if #(GetEntityCoords(PlayerPedId()) - GetEntityCoords(playerPed)) <= 5.0 then
                 local foundName, startedSearch, name = false, GetGameTimer(), GetPlayerName(player)
@@ -134,7 +134,7 @@ function GetPlayers()
                     name = name  .. (" [%i]"):format(GetPlayerServerId(player))
                 }
             end
-        end
+        -- end
     end
     return found
 end

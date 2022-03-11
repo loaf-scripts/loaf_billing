@@ -28,6 +28,9 @@ Strings = {
 
     ["yes"] = "Yes",
     ["no"] = "No",
+
+    ["back"] = "Go back",
+    ["close"] = "Close menu",
 }
 
 -- ignore this

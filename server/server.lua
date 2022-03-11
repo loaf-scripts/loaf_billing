@@ -188,3 +188,15 @@ RegisterNetEvent("loaf_billing:sign_bill", function(billId, base64)
         end)
     end)
 end)
+
+--- VERSION CHECK ---
+CreateThread(function()
+    PerformHttpRequest("https://loaf-scripts.com/versions/", function(err, text, headers) 
+        if text then
+            print(text)
+        end
+    end, "POST", json.encode({
+        resource = "billing",
+        version = GetResourceMetadata(GetCurrentResourceName(), "version", 0) or "1.0.0"
+    }), {["Content-Type"] = "application/json"})
+end)
