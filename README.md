@@ -1,4 +1,5 @@
 # Loaf Billing - FiveM Invoice / Billing Script for ESX & QBCore
+![example invoice](https://github.com/loaf-scripts/loaf_billing/blob/main/billing.png?raw=true)
 
 ## Features
 * NUI, not only pressing a button in a menu
