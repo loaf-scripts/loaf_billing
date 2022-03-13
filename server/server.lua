@@ -124,8 +124,6 @@ end
 RegisterNetEvent("loaf_billing:sign_bill", function(billId, base64)
     local src = source
 
-    -- if not PayMoney(src, amount) then return end
-
     MySQL.Async.fetchAll("SELECT * FROM `loaf_invoices` WHERE `id`=@billId AND `owner`=@identifier", {
         ["@billId"] = billId,
         ["@identifier"] = GetIdentifier(src)
