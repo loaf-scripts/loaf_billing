@@ -120,6 +120,7 @@ if Config.ReplaceESXBilling then
         SendBill(biller, function(sent) end, billed, 30, 0, amount, label, label, job)
     end)
 end
+exports("CreateBill", SendBill)
 
 RegisterNetEvent("loaf_billing:sign_bill", function(billId, base64)
     local src = source
