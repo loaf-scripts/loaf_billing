@@ -183,8 +183,24 @@ RegisterNetEvent("loaf_billing:sign_bill", function(billId, base64)
         }, function()
             res[1].late = daysLate
             res[1].signed = true
+            AddCompanyMoney(res[1].company, totalAmount)
             TriggerEvent("loaf_billing:bill_paid", res)
         end)
+    end)
+end)
+
+exports("RemoveBill", function(billId)
+    MySQL.Async.fetchScalar("SELECT `owner` FROM `loaf_invoices` WHERE `id`=@id", {
+        ["@id"] = billId
+    }, function(owner)
+        if owner then
+            MySQL.Async.execute("DELETE FROM `loaf_invoices` WHERE `id`=@id", {["@id"] = billId})
+
+            local player = GetPlayerFromIdentifier(owner)
+            if player then
+                TriggerClientEvent("loaf_billing:remove_bill", player, billId)
+            end
+        end
     end)
 end)
 

@@ -53,4 +53,12 @@ CreateThread(function()
     function HasJob(source, job)
         return ESX.GetPlayerFromId(source)?.getJob().name == job
     end
+
+    function AddCompanyMoney(company, amount)
+        TriggerEvent("esx_addonaccount:getSharedAccount", "society_" .. company, function(account)
+            if account then
+                account.addMoney(amount)
+            end
+        end)
+    end
 end)
