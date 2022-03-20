@@ -42,4 +42,8 @@ CreateThread(function()
     function HasJob(source, job)
         return QBCore.Functions.GetPlayer(source)?.PlayerData.job.name == job
     end
+
+    function AddCompanyMoney(company, amount)
+        TriggerEvent("qb-bossmenu:server:addAccountMoney", company, amount)
+    end
 end)
