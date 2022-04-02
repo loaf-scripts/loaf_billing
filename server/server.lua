@@ -102,7 +102,7 @@ function SendBill(biller, cb, billed, due, interest, amount, name, description, 
         VALUES
             (@id, @biller, @billerName, @billed, @billedName, @owner, @due, @interest, @amount, @name, @description, @company, @company_name)
     ]], sqlData, function()
-        Notify(biller, Strings["sent_bill"]:format(amount, sqlData["@billerName"]))
+        Notify(biller, Strings["sent_bill"]:format(amount, sqlData["@billedName"]))
         Notify(billed, Strings["received_bill"]:format(amount))
         TriggerClientEvent("loaf_billing:add_bill", billed, {
             id = id,
