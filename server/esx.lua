@@ -29,7 +29,7 @@ CreateThread(function()
         if xPlayer.getMoney() >= amount then
             xPlayer.removeMoney(amount)
             return true
-        elseif xPlayer.getAccountMoney("bank").money >= amount then
+        elseif xPlayer.getAccount("bank").money >= amount then
             xPlayer.removeAccountMoney("bank", amount)
             return true
         end
