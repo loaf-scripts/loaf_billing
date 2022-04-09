@@ -44,6 +44,10 @@ CreateThread(function()
     end
 
     function AddCompanyMoney(company, amount)
-        TriggerEvent("qb-bossmenu:server:addAccountMoney", company, amount)
+        if GetResourceState("qb-management") == "started" then
+            exports["qb-management"]:AddMoney(company, amount)
+        elseif GetResourceState("qb-bossmenu") == "started" then
+            TriggerEvent("qb-bossmenu:server:addAccountMoney", company, amount)
+        end
     end
 end)
