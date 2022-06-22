@@ -97,7 +97,7 @@ function SendBill(biller, cb, billed, due, interest, amount, name, description, 
         ["@company_name"] = GetCompanyName(company)
     }
     MySQL.Async.execute([[
-        INSERT INTO `loaf_invoices` 
+        INSERT INTO `loaf_invoices`
             (`id`, `biller`, `biller_name`, `billed`, `billed_name`, `owner`, `due`, `interest`, `amount`, `name`, `description`, `company`, `company_name`)
         VALUES
             (@id, @biller, @billerName, @billed, @billedName, @owner, @due, @interest, @amount, @name, @description, @company, @company_name)
@@ -115,10 +115,19 @@ end
 
 lib.RegisterCallback("loaf_billing:create_bill", SendBill)
 if Config.ReplaceESXBilling then
-    RegisterNetEvent("esx_billing:sendBill", function(billed, job, label, amount)
-        local biller = source
-        SendBill(biller, function(sent) end, billed, 30, 0, amount, label, label, job)
-    end)
+        -- esx_billing:sendBill compatibility
+        -- biller comes from the event source
+        -- args: billed (user to be billed), sharedAccountName (esx society account to remit, if any), label (invoice text), amount (cash amount)
+        RegisterNetEvent("esx_billing:sendBill", function(billed, sharedAccountName, label, amount)
+            local biller = source
+            local job = sharedAccountName:gsub('^society_', '') -- loaf operates off the job name, not the society name. This enables compatibility with esx_billing defaults
+            -- print('esx:sendBill account: ' .. sharedAccountName .. ' job: ' .. job .. ' label: ' .. label .. ' amount: ' .. amount)
+            SendBill(biller, function(sent, code)
+                if (sent == false) then
+                    print('loaf/esx sendBill bridge: send failed: ' .. code)
+                end
+            end, billed, 30, 0, amount, label, label, job)
+        end)
 end
 exports("CreateBill", SendBill)
 
@@ -206,7 +215,7 @@ end)
 
 --- VERSION CHECK ---
 CreateThread(function()
-    PerformHttpRequest("https://loaf-scripts.com/versions/", function(err, text, headers) 
+    PerformHttpRequest("https://loaf-scripts.com/versions/", function(err, text, headers)
         if text then
             print(text)
         end
