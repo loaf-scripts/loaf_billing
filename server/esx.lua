@@ -3,10 +3,14 @@ CreateThread(function()
         return
     end
 
-    local ESX
-    TriggerEvent("esx:getSharedObject", function(esx)
-        ESX = esx
+    local export, ESX = pcall(function()
+        return exports.es_extended:getSharedObject()
     end)
+    if not export then
+        TriggerEvent("esx:getSharedObject", function(obj)
+            ESX = obj
+        end)
+    end
 
     function Notify(source, message)
         TriggerClientEvent("esx:showNotification", source, message)
