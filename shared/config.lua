@@ -1,5 +1,5 @@
 Config = {
-    Framework = "esx", -- esx or qb
+    Framework = "auto", -- esx or qb
 
     -- esx options:
     MenuAlign = "bottom-right", -- the esx_menu_default menu location

@@ -45,7 +45,15 @@ CreateThread(function()
 
     function AddCompanyMoney(company, amount)
         if GetResourceState("qb-management") == "started" then
-            exports["qb-management"]:AddMoney(company, amount)
+            local success, res = pcall(function()
+                return exports["qb-management"]:AddMoney(company, amount)
+            end)
+
+            if success then
+                return res
+            else
+                return exports["qb-banking"]:AddMoney(company, amount)
+            end
         elseif GetResourceState("qb-bossmenu") == "started" then
             TriggerEvent("qb-bossmenu:server:addAccountMoney", company, amount)
         end
