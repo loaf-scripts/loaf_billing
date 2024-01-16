@@ -2,7 +2,7 @@
 
 CREATE TABLE IF NOT EXISTS `loaf_invoices` (
     `id` VARCHAR(15), -- unique bill id
-    `issued` DATE DEFAULT CURRENT_DATE, -- the date the bill was issued
+    `issued` DATE DEFAULT (CURRENT_DATE), -- the date the bill was issued
 
     `biller` VARCHAR(150) NOT NULL, -- the identifier who issued the bill
     `biller_name` VARCHAR(150) NOT NULL, -- the name of the person who issued the bill
